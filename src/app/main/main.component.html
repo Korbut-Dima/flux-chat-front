@@ -1,0 +1,21 @@
+<nb-layout>
+
+  <nb-layout-header class="header-top">
+    <div *ngIf="showUserName" class="user-menu">
+      <nb-user [name]="username"
+               [nbContextMenu]="items"
+               nbContextMenuTag="my-context-menu">
+
+      </nb-user>
+    </div>
+  </nb-layout-header>
+
+  <nb-sidebar>
+    <nb-menu [items]="menuItems"  autoCollapse="true" >
+    </nb-menu>
+  </nb-sidebar>
+
+  <nb-layout-column class="main-layout-wrap">
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+</nb-layout>

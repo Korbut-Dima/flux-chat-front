@@ -1,0 +1,23 @@
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  .create-action button {
+    margin-left: 1em;
+  }
+}
+
+
+.item-content-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  gap: .5rem;
+  align-items: center;
+
+  i {
+    padding: 1rem;
+    margin: auto 0;
+  }
+}

@@ -1,0 +1,23 @@
+<nb-chat *ngIf="chat" size="giant">
+  <ng-template nbChatTitle>
+    <div class="card-header">
+      <p>{{chat.name}}</p>
+      <div>
+
+        <nb-select #select multiple placeholder="Multiple Select" >
+          <nb-option *ngFor="let user of users$ | async" [value]="user.id">{{user.firstName}} {{user.lastName}}</nb-option>
+        </nb-select>
+        <button nbButton status="primary" (click)="onSelectionEnd(select, chat.id)" [disabled]="!select.selected || !select.selected.length">Додати</button>
+      </div>
+    </div>
+  </ng-template>
+  <nb-chat-message *ngFor="let msg of messages"
+                   [reply]="msg.senderId === userId"
+                   [message]="msg.content"
+                   [sender]="msg.sender || 'Системне повідомлення'"
+                   [date]="msg.createdAt"
+                   dateFormat="MMM d, y, h:mm a">
+  >
+  </nb-chat-message>
+  <nb-chat-form (send)="sendMessage($event, chat.id)"></nb-chat-form>
+</nb-chat>

@@ -1,0 +1,8 @@
+<nb-card class="create-station-location-dialog-card">
+  <nb-card-header>{{header}}</nb-card-header>
+  <nb-card-body *ngIf="content"><div [innerHTML]="content"></div></nb-card-body>
+  <nb-card-footer>
+    <button nbButton (click)="onClose(false)">{{noButtonName}}</button>
+    <button nbButton status="primary" (click)="onClose(true)">{{ yesButtonName }}</button>
+  </nb-card-footer>
+</nb-card>

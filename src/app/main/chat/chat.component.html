@@ -1,0 +1,31 @@
+<div class="main-wrap">
+  <nb-card class="actions-wrap">
+    <nb-card-body>
+      <div class="actions">
+        <div class="search">
+          <input nbInput placeholder="Пошук"/>
+        </div>
+        <div class="create-action">
+          <input [formControl]="nameControl" nbInput placeholder="Введіть назва чату"/>
+          <button nbButton status="primary" [disabled]="nameControl.invalid" (click)="createChat()">Створити</button>
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
+
+  <nb-card class="users-wrap">
+    <nb-list>
+      @for (chat of chats; track chat.id) {
+        <nb-list-item style="cursor: pointer;" (click)="onChatPressed(chat.id)">
+          <div class="item-content-wrap">
+            <div>{{ chat.name }}</div>
+            <div>
+              <i class="fas fa-ellipsis-vertical" ></i>
+              <button nbButton status="danger">Видалити</button>
+            </div>
+          </div>
+        </nb-list-item>
+      }
+    </nb-list>
+  </nb-card>
+</div>

@@ -1,0 +1,15 @@
+{
+  "/api": {
+//    "target": "http://34.68.248.38:5000",
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/flux-ws": {
+    //    "target": "http://34.68.248.38:5000",
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true,
+    "ws": true
+  }
+}

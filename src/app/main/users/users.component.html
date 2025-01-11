@@ -1,0 +1,62 @@
+<ng-template #dialog let-ref="dialogRef">
+  <nb-card>
+    <nb-card-header>{{ userForm?.id ? 'Відредагувати' : 'Створити нового користувача' }}</nb-card-header>
+    <nb-card-body>
+      <div class="users-form-wrap">
+        <input nbInput placeholder="Ім'я" [(ngModel)]="userForm.firstName" />
+
+        <input nbInput placeholder="Прізвище" [(ngModel)]="userForm.lastName" />
+
+        <input nbInput placeholder="Емейл" [(ngModel)]="userForm.email" />
+
+        <input nbInput placeholder="Номер телефону" [(ngModel)]="userForm.phone" />
+
+        <input *ngIf="passwordToggle" nbInput placeholder="Пароль" [(ngModel)]="userForm.password" />
+      </div>
+    </nb-card-body>
+    <nb-card-footer class="users-form-footer">
+      <button nbButton (click)="ref.close()" status="primary">{{ userForm?.id ? 'Зберегти' : 'Створити' }}</button>
+    </nb-card-footer>
+  </nb-card>
+</ng-template>
+
+<div class="users-main-wrap">
+  <nb-card class="users-actions-wrap">
+    <nb-card-body>
+      <div class="users-actions">
+        <input nbInput placeholder="Пошук" (keyup)="search($event)" />
+
+        <button nbButton status="primary" (click)="open(dialog)">Створити</button>
+      </div>
+    </nb-card-body>
+  </nb-card>
+
+  <nb-card class="users-wrap">
+    <nb-list>
+      @for (user of users; track user.id) {
+        <nb-list-item>
+          <div class="user-item-content-wrap">
+            <div>
+              <div>{{ user.email }}</div>
+              <div>{{ user.firstName + ' ' + user.lastName }}</div>
+            </div>
+            <div>
+              <i class="fas fa-ellipsis-vertical" (click)="open(dialog, user)"></i>
+              <button nbButton status="danger" (click)="openDeleteDialog(deleteDialog, user)">Видалити</button>
+            </div>
+          </div>
+        </nb-list-item>
+      }
+    </nb-list>
+  </nb-card>
+</div>
+
+<ng-template #deleteDialog let-ref="dialogRef" let-user>
+  <nb-card>
+    <nb-card-header>{{ 'Ви впевнені?' }}</nb-card-header>
+    <nb-card-footer class="users-form-footer-d">
+      <button nbButton status="primary" (click)="confirmDelete(user, ref)">Підтвердити</button>
+      <button nbButton status="basic" (click)="ref.close()">Відмінити</button>
+    </nb-card-footer>
+  </nb-card>
+</ng-template>

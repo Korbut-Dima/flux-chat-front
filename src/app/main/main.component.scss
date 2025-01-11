@@ -1,0 +1,32 @@
+.logo {
+  img {
+    // Styles for the image inside the logo div
+    height: 50px; // Example height
+    width: auto; // Example width
+    margin-left: 30px;
+  }
+}
+:host nb-layout-header ::ng-deep nav {
+  justify-content: space-between;
+}
+
+.main-layout-wrap {
+  margin-top: 5%;
+  height: 90vh;
+  overflow: auto;
+}
+
+.scrollable {
+  overflow-y: hidden; /* Prevent the vertical scrollbar */
+  overflow-x: hidden; /* Ensure no horizontal scrollbar */
+}
+
+.header-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensure it spans the full width of the page */
+  z-index: 1000; /* Ensure it's above other content */
+  background-color: white; /* Avoid transparency during scrolling */
+}
+
