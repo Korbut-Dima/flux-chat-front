@@ -51,15 +51,17 @@ export class MainComponent implements OnInit{
     let user = this.authService.getCurrentUser();
     this.showUserName = user;
 
-    if (user.firstName && user.lastName) {
-      this.username = user.firstName + ' ' + user.lastName;
-    } else if (user.firstName) {
-      this.username = user.firstName;
-    } else if (user.lastName) {
-      this.username = user.lastName;
-    } else {
-      this.username = 'Користувач'
-    }
+   if(user) {
+     if (user?.firstName && user.lastName) {
+       this.username = user.firstName + ' ' + user.lastName;
+     } else if (user.firstName) {
+       this.username = user.firstName;
+     } else if (user.lastName) {
+       this.username = user.lastName;
+     } else {
+       this.username = 'Користувач'
+     }
+   }
   }
 
   private filterMenuItems() {

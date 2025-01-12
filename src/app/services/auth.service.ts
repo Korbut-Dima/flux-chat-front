@@ -37,7 +37,8 @@ export class AuthService {
       this.user = payload; // Assuming user data is stored in the token's payload
     } else {
       this.user = null;
-      localStorage.removeItem(this.authSecretKey); // Remove expired token
+      localStorage.removeItem(this.authSecretKey);
+      this.router.navigate(['/auth/login'])// Remove expired token
     }
   }
 
